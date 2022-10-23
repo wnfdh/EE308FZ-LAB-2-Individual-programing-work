@@ -23,15 +23,13 @@ int main()
 	};
 	while(getline(inFile,line))
 	{
-		cout<<line<<endl;
 		for(int j=0;j<32;j++)
 		{
 			index=0; 
-			while((index=line.find(substr[j],index))!= line.npos)//find£¨str,int i£©´ÓµÚi¸ö×Ö·ûÕÒ³öÏÖµÄ×Ö·û ÕÒ²»µ½·µ»Ønpos×ªÎªintĞÍÎª-1 
+			while((index=line.find(substr[j],index))!= line.npos)//findï¼ˆstr,int iï¼‰ä»ç¬¬iä¸ªå­—ç¬¦æ‰¾å‡ºç°çš„å­—ç¬¦ æ‰¾ä¸åˆ°è¿”å›nposè½¬ä¸ºintå‹ä¸º-1 
 			{
 				if(line[index+2]==char('u'))
 				{
-					cout<<"detect"<<endl;
 					countdouble++;
 				}
 				count++;
