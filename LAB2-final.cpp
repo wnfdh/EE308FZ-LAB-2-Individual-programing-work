@@ -4,22 +4,23 @@
 #include<cstdlib>
 #include<vector>
 using namespace std;
-string keyword[32]={
-    "auto","break","case","char","const","continue","default","do","double","else","enum","extern","float","for",	"goto",
-	"if","int","long","register","return","short","signed",	"sizeof","static","struct",	"switch","typedef","union",	"unsigned",	
-	"void","volatile", "while"
+string keyword[32]=                 //keyword in c
+	{ "auto","break","case","char","const","continue","default","do","double","else",
+	  "enum","extern","float","for",	"goto","if","int","long","register","return",
+	  "short","signed",	"sizeof","static","struct",	"switch","typedef","union",	"unsigned",	
+	  "void","volatile", "while"
 	};
-	vector<int>countcase;
-	vector<int>count;	
-	int countkeyword=0;
-	int countswitch=0;
-	int a=0;
-	int i=0;
-	int countifelse=0;
-	int countif=0;
+	vector<int>countcase;          //Used in level3
+	vector<int>count;	           //Used in level4
+	int countkeyword=0;            //Used in level1
+	int countswitch=0;             //Used in level3
+	int a=0;                       //Used in level3
+	int i=0;                       //Used in level3
+	int countifelse=0;             //Used in level4
+	int countif=0;                 //Used in level4
 	int main ()
 	{
-		string filename = "test.txt";
+		string filename = "test.txt"; //read file
 		string line;
 		ifstream inFile;
 		inFile.open(filename.c_str());
@@ -32,20 +33,20 @@ string keyword[32]={
 		cout<<"Enter the level:"<<endl;
 		cin>>level;
 		
-		int check1(string str,string substr);
-		int check2(string str,string substr);	
-		void counttotal(string str);			
-		void countsc(string str2);			
-		void countiee(string str3);		
+		int check1(string str,string substr);     //Determine if there are keywords
+		int check2(string str,string substr);	  //Used in level4,determine if there are keywords
+		void counttotal(string str);			  //count keyword
+		void countsc(string str2);			      //count switch and case
+		void countiee(string str3);		          //count if-else and if-elseif-else
 		 
-		while(getline(inFile,line))			
-		{
-			if(level>=3)
-				countiee(line);           
+		while(getline(inFile,line))			      //Pass the read text into the function and use it
+		{          
 			if(level>=1)
 				counttotal(line);
 			if(level>=2)
 				countsc(line);
+			if(level>=3)
+				countiee(line); 
 		}
 		if(level>=1)
 			cout<<"total num: "<<countkeyword<<endl;
@@ -79,6 +80,7 @@ string keyword[32]={
 		}
 	}
 	
+		
 	int check1(string str,string substr)	
 	{
 		int index=str.find(substr,0);
@@ -102,6 +104,7 @@ string keyword[32]={
 		}
 		return 0;
 	}
+	
 	int check2(string str,string substr)	
 	{
 		int index=str.find(substr,0);
@@ -127,6 +130,7 @@ string keyword[32]={
 		}
 		return 0;
 	}
+	
 	void counttotal(string str)		
 	{
 		for(int i=0;i<32;i++)			
@@ -136,7 +140,8 @@ string keyword[32]={
 				countkeyword++;
 			}
 		}
-	}		
+	}
+			
 	void countsc(string str2)		
 	{
 		int a=0; 
@@ -147,11 +152,11 @@ string keyword[32]={
 		}
 		if(a==1)
 		{
-			i++;
+			i++;                           //index of vector
 		}
 		if(check1(str2,"case")==1)
 			{
-				countcase.push_back(0);
+				countcase.push_back(0);    //put into vector
 				countcase[i-1]++;				
 			}	
 	}
