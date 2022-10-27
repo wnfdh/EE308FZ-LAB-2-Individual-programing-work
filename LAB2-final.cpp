@@ -33,10 +33,11 @@ string keyword[32]={
 		cout<<"Enter the level:"<<endl;
 		cin>>level;
 		
-		int check(string str,string str1);	
-		void counttotal(string word_1);			
-		void countsc(string word_2);			
-		void countiee(string word_3);		
+		int check1(string str,string substr);
+		int check2(string str,string substr);	
+		void counttotal(string str);			
+		void countsc(string str2);			
+		void countiee(string str3);		
 		 
 		while(getline(inFile,line))			
 		{
@@ -79,10 +80,10 @@ string keyword[32]={
 		}
 	}
 	
-	int check1(string str,string str1)	
+	int check1(string str,string substr)	
 	{
-		int index=str.find(str1,0);
-		int len=str1.length();
+		int index=str.find(substr,0);
+		int len=substr.length();
 		if(index!=string::npos)
 		{
 			if(index==0)
@@ -102,10 +103,10 @@ string keyword[32]={
 		}
 		return 0;
 	}
-	int check2(string str,string str1)	
+	int check2(string str,string substr)	
 	{
-		int index=str.find(str1,0);
-		int len=str1.length();
+		int index=str.find(substr,0);
+		int len=substr.length();
 		if(index!=string::npos)
 		{
 			if(str[index]==char('i')&&str[index-2]==char('e'))return 0;
