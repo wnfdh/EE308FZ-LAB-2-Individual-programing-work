@@ -1,8 +1,8 @@
-#include<iostream>
-#include<string>
-#include<fstream>
-#include<cstdlib>
-#include<vector>
+ #include<iostream>
+ #include<string>
+ #include<fstream>
+ #include<cstdlib>
+ #include<vector>
 using namespace std;
 string keyword[32]=                 //keyword in c
 	{ "auto","break","case","char","const","continue","default","do","double","else",
@@ -17,6 +17,7 @@ string keyword[32]=                 //keyword in c
 	int a=0;                       //Used in level3
 	int i=0;                       //Used in level3
 	int countifelse=0;             //Used in level4
+	int countelse;				   //Used in level4
 	int countif=0;                 //Used in level4
 	int main ()
 	{
@@ -76,7 +77,14 @@ string keyword[32]=                 //keyword in c
 		}
 		if(level>=4)
 		{
-			cout<<"if-elseif-else num: "<<countif-countifelse<<endl;
+			for(int k=0;k<count.size();k++)
+			{
+				if(count[k]==3)
+				{
+					countelse++;
+				}
+			}
+			cout<<"if-elseif-else num: "<<countelse-countifelse<<endl;
 		}
 	}
 	
